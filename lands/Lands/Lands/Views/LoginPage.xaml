@@ -74,6 +74,7 @@
                             HeightRequest="46"
                             Command="{Binding LoginCommand}"
                             HorizontalOptions="FillAndExpand"
+                            IsEnabled="{Binding IsEnabled, Mode=TwoWay}"
                             TextColor="White"
                             BorderRadius="23"/>
 
@@ -82,6 +83,7 @@
                             Text="Cadastrar"
                             HeightRequest="46"
                             HorizontalOptions="FillAndExpand"
+                            IsEnabled="{Binding IsEnabled, Mode=TwoWay}"
                             TextColor="White"
                             BorderRadius="23"/>
                     </StackLayout>

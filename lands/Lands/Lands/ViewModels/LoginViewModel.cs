@@ -1,23 +1,57 @@
 ﻿using GalaSoft.MvvmLight.Command;
-using System;
+using Lands.Views;
 using System.Windows.Input;
+using Xamarin.Forms;
 
 namespace Lands.ViewModels
 {
-    public class LoginViewModel
+    public class LoginViewModel : BaseViewModel
     {
-        public string Email { get; set; }
+        private string email;
+        private string password;
+        private bool isRunning;
+        private bool isEnabled;
 
-        public string Password { get; set; }
+        public string Email
+        {
+            get { return email; }
+            set { SetValue(ref email, value); }
+        }
 
-        public bool IsRunning { get; set; }
+        public string Password
+        {
+            get { return password; }
+            set { SetValue(ref password, value); }
+        }
 
-        public bool IsRemembered { get; set; }
+        public bool IsRunning
+        {
+            get { return isRunning; }
+            set { SetValue(ref isRunning, value); }
+        }
+
+        public bool IsRemembered
+        {
+            get;
+            set;
+        }
+
+        public bool IsEnabled
+        {
+            get { return isEnabled; }
+            set { SetValue(ref isEnabled, value); }
+        }
 
 
         public LoginViewModel()
         {
             this.IsRunning = true;
+            this.IsEnabled = true;
+
+            this.Email = "edson250@hotmail.com";
+            this.Password = "1234";
+
+            //http://restcountries.eu/rest/v2/all
         }
         public ICommand LoginCommand
         {
@@ -31,23 +65,35 @@ namespace Lands.ViewModels
         {
             if (string.IsNullOrEmpty(this.Email))
             {
-                await App.Current.MainPage.DisplayAlert("Error", "You must  enter an Email", "OK");
+                await Application.Current.MainPage.DisplayAlert("Error", "You must  enter an Email", "OK");
                 return;
             }
 
             if (string.IsNullOrEmpty(this.Password))
             {
-                await App.Current.MainPage.DisplayAlert("Error", "You must  enter an Password", "OK");
+                await Application.Current.MainPage.DisplayAlert("Error", "You must  enter an Password", "OK");
                 return;
             }
+            this.IsRunning = true;
+            this.IsEnabled = true;
 
             if (this.Email != "edson250@hotmail.com" || this.Password != "1234")
             {
-                await App.Current.MainPage.DisplayAlert("Error","Email or Password incorret", "OK");
+                IsRunning = false;
+                IsEnabled = true;
+                await Application.Current.MainPage.DisplayAlert("Error","Email or Password incorret", "OK");
+                this.Password = string.Empty;
                 return;
             }
 
-            await App.Current.MainPage.DisplayAlert("OK", "Fuck yeahh", "OK");
+            isRunning = false;
+            isEnabled = true;
+
+            this.Email = string.Empty;
+            this.Password = string.Empty;
+
+            MainViewModel.GetInstance().Lands = new LandsViewModel();
+            await Application.Current.MainPage.Navigation.PushAsync(new LandsPage());
         }
     }
 }
