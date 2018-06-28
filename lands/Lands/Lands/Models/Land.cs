@@ -36,16 +36,16 @@ namespace Lands.Models
         public int Population { get; set; }
 
         [JsonProperty(PropertyName = "latlng")]
-        public List<int> Latlng { get; set; }
+        public List<double> Latlng { get; set; }
 
         [JsonProperty(PropertyName = "demonym")]
         public string Demonym { get; set; }
 
         [JsonProperty(PropertyName = "area")]
-        public int Area { get; set; }
+        public double? Area { get; set; }
 
         [JsonProperty(PropertyName = "gini")]
-        public double Gini { get; set; }
+        public double? Gini { get; set; }
 
         [JsonProperty(PropertyName = "timezones")]
         public List<string> Timezones { get; set; }
@@ -63,7 +63,7 @@ namespace Lands.Models
         public List<Currency> Currencies { get; set; }
 
         [JsonProperty(PropertyName = "languages")]
-        public List<Language> Languages { get; set; }
+        public List<Language> Languagen { get; set; }
 
         [JsonProperty(PropertyName = "translations")]
         public Translations Translations { get; set; }
