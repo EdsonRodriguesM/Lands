@@ -6,14 +6,12 @@
              Title="Login">
     <ContentPage.Content>
         <ScrollView  BindingContext="{Binding Login}" >
-           
             <StackLayout Padding="5">
                 <!--<Label Text="Lands"
                        FontSize="Large"
                        FontAttributes="Bold"
                     VerticalOptions="CenterAndExpand" 
                     HorizontalOptions="Center" />-->
-
                 <Image
                     WidthRequest="200"
                     Source="onu.png"/>
@@ -90,11 +88,19 @@
 
                 <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="EndAndExpand">
                     <Image Source="facebook_logo.png"
-                           WidthRequest="85"/>
+                           WidthRequest="100">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding LoginFacebookComand}"/>
+                        </Image.GestureRecognizers>
+                    </Image>
+                    
                     <Image Source="twitter_logo.png"
-                           WidthRequest="85"/>
+                           WidthRequest="100">
+                    </Image>
+                    
                     <Image Source="instagran_logo.png"
-                           WidthRequest="85"/>
+                           WidthRequest="100">
+                    </Image>
                 </StackLayout>
 
             </StackLayout>

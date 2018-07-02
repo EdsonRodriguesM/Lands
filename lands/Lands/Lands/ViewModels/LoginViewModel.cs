@@ -14,20 +14,20 @@ namespace Lands.ViewModels
 
         public string Email
         {
-            get { return email; }
-            set { SetValue(ref email, value); }
+            get { return this.email; }
+            set { SetValue(ref this.email, value); }
         }
 
         public string Password
         {
-            get { return password; }
-            set { SetValue(ref password, value); }
+            get { return this.password; }
+            set { SetValue(ref this.password, value); }
         }
 
         public bool IsRunning
         {
-            get { return isRunning; }
-            set { SetValue(ref isRunning, value); }
+            get { return this.isRunning; }
+            set { SetValue(ref this.isRunning, value); }
         }
 
         public bool IsRemembered
@@ -38,20 +38,20 @@ namespace Lands.ViewModels
 
         public bool IsEnabled
         {
-            get { return isEnabled; }
-            set { SetValue(ref isEnabled, value); }
+            get { return this.isEnabled; }
+            set { SetValue(ref this.isEnabled, value); }
         }
 
 
         public LoginViewModel()
         {
-            this.IsRunning = true;
+            this.IsRemembered = true;
             this.IsEnabled = true;
 
             this.Email = "edson250@hotmail.com";
             this.Password = "1234";
 
-            //http://restcountries.eu/rest/v2/all
+            
         }
         public ICommand LoginCommand
         {
@@ -74,7 +74,7 @@ namespace Lands.ViewModels
                 await Application.Current.MainPage.DisplayAlert("Error", "You must  enter an Password", "OK");
                 return;
             }
-            this.IsRunning = true;
+            this.IsRunning = false;
             this.IsEnabled = true;
 
             if (this.Email != "edson250@hotmail.com" || this.Password != "1234")
@@ -86,8 +86,8 @@ namespace Lands.ViewModels
                 return;
             }
 
-            isRunning = false;
-            isEnabled = true;
+            this.IsRunning = false;
+            this.IsEnabled = true;
 
             this.Email = string.Empty;
             this.Password = string.Empty;

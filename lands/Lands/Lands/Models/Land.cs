@@ -63,7 +63,7 @@ namespace Lands.Models
         public List<Currency> Currencies { get; set; }
 
         [JsonProperty(PropertyName = "languages")]
-        public List<Language> Languagen { get; set; }
+        public List<Language> Languages { get; set; }
 
         [JsonProperty(PropertyName = "translations")]
         public Translations Translations { get; set; }
@@ -76,5 +76,7 @@ namespace Lands.Models
 
         [JsonProperty(PropertyName = "cioc")]
         public string Cioc { get; set; }
+
+
     }
 }
